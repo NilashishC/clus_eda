@@ -12,5 +12,5 @@
         recipient_type: roomId
         recipient_id: "{{ WEBEX_RECIPIENT_ID }}"
         msg_type: text
-        personal_token: "{{ WEBEX_PERSONAL_TOKEN }}"
+        personal_token: "{{ WEBEX_BOT_TOKEN }}"
         msg: "High CPU utilization detected on {{ source }} at {{ '%Y-%m-%d %H:%M:%S %Z'|strftime(timestamp) }}"
