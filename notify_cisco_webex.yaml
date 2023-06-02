@@ -4,13 +4,13 @@
   tasks:
     - name: Set affected device from event
       ansible.builtin.set_fact:
-        source: "{{ ansible_eda.event.i }}"
-        timestamp: "{{ ansible_eda.event.meta.received_at }}"
+        source: "{{ ansible_eda.event.tags.source }}"
+        timestamp: "{{ ansible_eda.event.timestamp }}"
 
     - name: Inform NetOps team about the incident
       community.general.cisco_webex:
         recipient_type: roomId
-        recipient_id: "{{ lookup('ansible.builtin.env', 'WEBEX_RECIPIENT_ID') }}"
+        recipient_id: "{{ WEBEX_RECIPIENT_ID }}"
         msg_type: text
-        personal_token: "{{ lookup('ansible.builtin.env', 'WEBEX_BOT_TOKEN') }}"
-        msg: "High CPU utilization detected on {{ source }} at {{ timestamp }}"
+        personal_token: "{{ WEBEX_PERSONAL_TOKEN }}"
+        msg: "High CPU utilization detected on {{ source }} at {{ '%Y-%m-%d %H:%M:%S %Z'|strftime(timestamp) }}"
