@@ -2,6 +2,10 @@
 - hosts: localhost
   gather_facts: yes
   tasks:
+    - debug:
+        var: ansible_eda | d({})
+    - debug:
+        var: event | d({})
     - name: Set affected device from event
       ansible.builtin.set_fact:
         source: "{{ ansible_eda.event.i }}"
