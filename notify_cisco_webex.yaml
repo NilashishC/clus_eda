@@ -2,10 +2,10 @@
 - hosts: localhost
   gather_facts: yes
   tasks:
-#    - name: Set affected device from event
-#      ansible.builtin.set_fact:
-#        source: "{{ ansible_eda.event.i }}"
-#        timestamp: "{{ ansible_eda.event.timestamp }}"
+    - name: Set affected device from event
+      ansible.builtin.set_fact:
+        source: "{{ ansible_eda.event.i }}"
+        timestamp: "{{ ansible_eda.event.timestamp }}"
 
     - name: Inform NetOps team about the incident
       community.general.cisco_webex:
