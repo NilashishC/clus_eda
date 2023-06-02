@@ -4,7 +4,7 @@
   tasks:
     - name: Set affected device from event
       ansible.builtin.set_fact:
-        source: "{{ ansible.event.tags.source }}"
+        source: "{{ ansible.event.i }}"
         timestamp: "{{ ansible.event.timestamp }}"
 
     - name: Inform NetOps team about the incident
