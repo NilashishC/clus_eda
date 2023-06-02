@@ -4,8 +4,8 @@
   tasks:
     - name: Set affected device from event
       ansible.builtin.set_fact:
-        source: "{{ ansible.event.tags.source }}"
-        timestamp: "{{ ansible.event.timestamp }}"
+        source: "{{ ansible_eda.event.i }}"
+        timestamp: "{{ ansible_eda.event.meta.received_at }}"
 
     - name: Inform NetOps team about the incident
       community.general.cisco_webex:
